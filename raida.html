@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<head>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,300&display=swap" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital@1&display=swap" rel="stylesheet">
+  
+  <title>Education</title>
+  
+  <style>
+
+    header {
+      text-align: center;
+      background: url('https://static.vecteezy.com/system/resources/thumbnails/003/323/638/small/flat-teachers-day-background-free-vector.jpg');
+      background-size: cover;
+      color: violet;
+    }
+    body {
+      background: yellow;
+    }
+    p {
+      padding: 10px;
+      margin: 10px;
+      border: 20px;
+      color:green;
+      font-family: 'merriweather', helvetica ;
+    }
+    h2 {
+       color: orange;
+       font-family: 'Nunito',italic;
+       
+    }
+    
+    a {
+      color: yellow;
+    }
+    h1 {
+      font-size: 75px;
+      font-family: 'Ubuntu', arial;
+    }
+    img {
+      margin: 60px 0px 10px 10px;
+      border: 6px solid coral;
+      border-radius: 35px;
+    }
+    ul {
+      padding: 10px;
+      background: rgba(1000,10,25,0.6);
+    }
+    li {
+      display: inline;
+      padding: 0px 10px 0px 10px;
+    }
+    article {
+      max-width: 500px;
+      padding: 10px;
+      margin: 0 auto;
+    }
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 36px;
+        padding:5px;
+      }
+      li {
+        padding: 5px;
+        display: block;
+      }
+    }
+
+    button {
+              float: left;
+	  margin-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://s29814.pcdn.co/wp-content/uploads/2022/12/shutterstock_1847661151.jpg.optimal.jpg" width=190px;>
+    <h1>Farzeen's Blog</h1>
+    <ul>
+    <li><a href="https://en.wikipedia.org/wiki/Education">Education</a></li       >
+    <li><a href="https://potomac.edu/benefits-of-education/">Benefits</a         ></li>
+    <li><a href="https://edubirdie.com/examples/importance-of-education-how-to-succeed-in-life/">Effective</a></li>
+      
+  </header>
+  <article>
+    <h2>What is Education?</h2>
+    <p>Education is a process of learningand a basic skills of knowledge that all human need in order to sucess. It gives a common idea of each topic, so that everyone gets a knowledge of every passion and occupation. </p>
+     <button class="likeButtons">Like</button>
+    <div class="numLikes">0</div>
+  </article>
+  <article>
+    <h2>How it is helpful?</h2>
+    <p>It help us understand in what topic we are advance in and learn about it more.It is something at everyone can learn and have a basic concept of everything, also it can spread all over world only by one source. It has a lot of beneficial purposes academic skills,economics, political and socialization, communication and more.</p>
+    <button class="likeButtons">Like</button>
+    <div class="numLikes">0</div>
+  </article>
+  <article>
+    <h2>Sources</h2>
+    <p>The sources it is spreading all over the world are teaching, tutoring, schooling,and more. Schools, colleges, and universities are some of the common placement where people gets the basic skills like education, and get specialized in that.</p>
+    <button class="likeButtons">Like</button>
+    <div class="numLikes">0</div>
+  </article>
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+  import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyA8wr4XePVxMYh22CCI5QCvTN4jhYC6A1c",
+    authDomain: "farzeen-raida-2.firebaseapp.com",
+    projectId: "farzeen-raida-2",
+    storageBucket: "farzeen-raida-2.appspot.com",
+    messagingSenderId: "516576762717",
+    appId: "1:516576762717:web:43fc644b061c873e4526b4"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+  const LikeButtons = document.querySelectorAll('.likeButtons')
+  const numLikes = document.querySelectorAll('.numLikes')
+
+  for (let i=0; i<LikeButtons.length; i++) {
+  		  LikeButtons[i].addEventListener('click', function(){ Like(i) })
+	  	  onValue(ref(db, "/article "+i+"/numLikes"), (snapshot) => {
+	  			    let data = snapshot.val();
+	  			    numLikes[i].innerHTML = data
+	  		  });
+	  	  
+    	  }
+
+  	  function Like(i) {
+  		  const numberLikes = parseInt(numLikes[i].innerHTML) + 1
+  		  set(ref(db, "article " + i), {
+  			  numLikes: numberLikes,
+  		  });
+  	  }
+  
+
+
+
+
+</script>
+
+</body>
+
+
