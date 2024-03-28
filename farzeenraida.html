@@ -40,6 +40,7 @@
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiXQYE0IXbY_g-XCHwMvqOtq0gE81EuUgnKJu6omsdmQXHuhLa7WuNKlJ-JfSgy1fB7Og&usqp=CAU",height="150", width="170">
   <p>Having Trouble in Math,solve your problem!</p>
   <input id="Name" type="identity" placeholder="Your name">
+  <input id="Email" placeholder="Your email">
   <input id="Problem" placeholder="Type problem, get solution">
   <input id="submit" type="submit">
 
@@ -64,6 +65,7 @@ import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.7.0
   const app = initializeApp(firebaseConfig);
   const db = getDatabase(app);
   const Name = document.querySelector("#Name") 
+  const Email = document.querySelector("#Email")
   const Problem = document.querySelector("#Problem")
   document.querySelector('#submit').addEventListener('click', Submit)
   
@@ -72,11 +74,13 @@ import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.7.0
 	  
   	  set(ref(db, timestamp), {
   		  Name: Name.value,
-  	      Problem: Problem.value,
+  	      Email: Email.value,
+		  Problem: Problem.value,
   	  });
 
   	  Name.value = ""
   	  Problem.value = ""
+	  Email.value = ""
   	}
  
   function buildTimestamp() {
@@ -120,5 +124,7 @@ function addLeadingZero(units) {
 </script>
 
 </body>
+
+
 
 
