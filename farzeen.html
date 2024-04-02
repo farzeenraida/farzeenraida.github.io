@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<head>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<link href='https://fonts.googleapis.com/css?family=Agbalumo' rel='stylesheet'type='text/css'>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: helvetica, sans-serif;
+  margin: 0 auto;
+  max-width: 600px;
+  background: rgba(247, 175, 92,1);
+}
+div {
+  height: 220px;
+  background-size: cover;
+  position: relative;
+  margin: 40px 0 0 0;
+  border-radius: 15px;
+}
+h1 {
+  font-family: 'Agbalumo', cursive;
+  text-align: center;
+  font-size: 75px;
+  color:rgba(255,247,0,1);
+  margin: 60px 0 0 0;
+}
+h2 {
+  text-align: center;
+  color:rgba(255, 0, 0,0.5);
+  margin: 0px 0 70px 0;
+  font-family: 'Roboto', sans-serif;
+}
+p {
+  font-family: 'Montserrat', sans-serif;
+  color: rgba(190, 240, 103,1);
+  background: black;
+  background: linear-gradient(bottom, rgba(245, 90, 66,1), rgba(245, 90, 66,.4));
+  background: -webkit-linear-gradient(bottom, rgba(245, 90, 66,1), rgba(245, 90, 66,.4));
+  background: -moz-linear-gradient(bottom, rgba(245, 90, 66,1), rgba(245, 90, 66,.4));
+  padding: 10px;
+  line-height: 28px;
+  text-align: justify;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  height: 30px;
+  transition: height .5s;
+  -webkit-transition: height .5s;
+  -moz-transition: height .5s;
+}
+small {
+  opacity: 0;
+}
+
+.show-description p {
+  height: 100px;
+}
+
+.show-description small {
+  opacity: 1;
+}
+
+.first{
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2yQ0iK2cAsT03ff8X8WcapGqMpJifAmtc_fKCpCNy7M1rnNDQCevxO6rTZvibSypFAG8&usqp=CAU");
+}
+.second{
+  background-image: url("https://c.ndtvimg.com/2020-01/a39okhfk_620_625x300_21_January_20.jpg");
+}
+.dessert{
+  background-image: url("https://i.ndtvimg.com/i/2015-10/rosogolla_650x400_51445247410.jpg");
+}
+.drink{
+  background-image: url("https://www.delmonte.com/sites/default/files/Mango-Mint-Lassi_1920x900.jpg");
+}
+
+price {
+  float: right;
+}
+@media (max-width: 500px) {
+  h1 {
+    font-size: 50px;
+    margin-top: 20px;
+    line-height: 40px;
+  }
+  h2 {
+    font-size:20px;
+    margin: 20px 0 30px 0;
+  }
+  div {
+    margin: 20px 12px 0 12px;
+  }
+  p {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  small {
+    font-size: 16px;
+  }
+}
+
+input {
+	font-size: 22px;
+}
+
+</style>
+
+</head>
+
+<body>
+<h1>Desi Stall</h1>
+<h2>Get The Taste Of Bengal</h2>
+
+<div class="second show-description">
+  <input class="quantities"type="number" min="0" style="width: 50px">
+  <p>Appetizer: Seekh Kabab <span class="price">$15</span><br />
+  <small> Meat steak made with soft lofy meat and have some fried burny tandury flavor, a lot of spices served with salad of onion, tomato, cucumber and lettuce, a special chilli, tamarind. </small></p>
+</div>
+
+<div class="first show-description">
+  <input class="quantities" type="number" min="0" style="width: 50px">
+  <p>Main Course: Chicken Biriyani <span class="price">$12</span><br />
+  <small>Rice with fried roasted masala, veggies and spices. Savory and spiced rice pilaf. Ingredients are Rice, Mutton, Chicken, Beef, Eggs, Nuts, Dried fruits. Vegetables, Potatoes, Spices, etc. </small></p>
+</div>
+
+<div class="dessert show-description">
+  <input class="quantities" type="number" min="0" style="width: 50px">
+  <p>Desert: Rosogolla <span class="price">$12</span><br />
+  <small> Fresh chenna dipped in the sugar syrap with a flavor of cardamon and then dried, served with vark, dried fruit, juicy inside ans dried outside, also known as sandesh.</small></p>
+</div>
+
+<div class="drink show-description">
+  <input class="quantities" type="number" min="0" style="width: 50px">
+  <p>Drink: Borhani <span class="price">$6</span><br />
+  <small> Fresh drink or juice made with sour yougurt,fesh mint,coriander, high level masala and spices, very flavorful, strong flavor of mustard and mint, blacksalt. </small></p>
+</div>
+<br><br>
+<input id="Name" type="identity" placeholder="Your name">
+<input id="Num" placeholder="Phone Number">
+<input id="Email" placeholder="Email">
+<input id="submit" type="submit">
+<br><br>
+
+<script>
+    $('div').on('click', function() {
+      $(this).toggleClass('show-description');
+  });
+</script>
+
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+  import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDw_V4HMsUjkua9-BSRFGaJB5QuoCv_fi0",
+    authDomain: "raida-b689c.firebaseapp.com",
+    databaseURL: "https://raida-b689c-default-rtdb.firebaseio.com",
+    projectId: "raida-b689c",
+    storageBucket: "raida-b689c.appspot.com",
+    messagingSenderId: "237724748419",
+    appId: "1:237724748419:web:2de17e29b2f29ab34d29b6"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+  const Name = document.querySelector("#Name") 
+  const Email = document.querySelector("#Email")
+  const Num = document.querySelector("#Num")
+  document.querySelector('#submit').addEventListener('click', Submit)
+  const prices = document.querySelectorAll(".price") 
+  const quantities = document.querySelectorAll(".quantities") 
+  const itemsList = ["Seekh Kabab", "Chicken Biriyani", "Rosogolla", "Borhani"]
+  
+  
+  
+  
+  function Submit() {
+  	  const timestamp = buildTimestamp()
+	  let total = 0
+	  let cart = { }
+	  for  (let i=0; i<quantities.length; i=i+1) {
+	  	if (quantities[i].value != "0" && quantities[i].value != "") {	
+			let price = prices[i].innerHTML.replace('$', '')
+			total = total + quantities[i].value * price
+	  		cart[itemsList[i]] = parseInt(quantities[i].value) 
+	  	}
+	  	quantities[i].value = ""
+	  }
+	 
+	  
+  	  set(ref(db, timestamp), {
+  		  Name: Name.value,
+  	      Number: Num.value,
+		  Email: Email.value,
+		  cart: cart,
+		  totalPrice: total,
+		  paid: "not yet",
+  	  });
+
+  	  Name.value = ""
+	  Email.value = ""
+  	  Num.value = ""
+  	}
+ 
+  function buildTimestamp() {
+  const now = new Date();
+  let timestamp = now.getFullYear().toString() + "/";
+  //const month = now.toLocaleString('default', { month: 'long' });
+
+  let month = now.getMonth()+1   //add 1 because Javascript uses 0 for January
+  month = month.toString()
+  month = addLeadingZero(month)
+  timestamp += month + "/"; 
+
+  let date = now.getDate().toString()
+  date = addLeadingZero(date)
+  timestamp += date + "/";
+
+  let hours = now.getHours().toString()
+  hours = addLeadingZero(hours)
+  timestamp += hours + ":";
+
+  let minutes = now.getMinutes().toString()
+  minutes = addLeadingZero(minutes)
+  timestamp += minutes + ":";
+
+  let seconds = now.getSeconds().toString()
+  seconds = addLeadingZero(seconds)
+  timestamp += seconds;
+  
+  return timestamp
+}
+	
+function addLeadingZero(units) {
+            if (units.length < 2) {
+	         units = "0" + units
+	}
+	return units
+}
+  
+</script>
+
+</body>
+
